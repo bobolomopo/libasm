@@ -6,7 +6,7 @@
 #    By: jandre <jandre@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 14:00:17 by jandre            #+#    #+#              #
-#    Updated: 2021/02/15 14:03:55 by jandre           ###   ########.fr        #
+#    Updated: 2021/02/15 14:43:22 by jandre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,23 +21,35 @@ else
 	NASMFLAGS = -f macho64
 endif
 
-SRC = 
+SRC = ft_strlen.s
 OBJ = $(SRC:.s=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(LIB) $(NAME) $(OBJ)
+	@echo "making library. . ."
+	@$(LIB) $(NAME) $(OBJ)
+	@echo "done!"
 
 %.o: %.s
-	$(NASM) $(NASMFLAGS) -o $@ $<
+	@echo "creating objects. . ."
+	@$(NASM) $(NASMFLAGS) -o $@ $<
+	@echo "done!"
+
+test: all
+	@echo "RESULT\n------"
+	@$(CC) main.c $(NAME) && ./a.out
 
 clean:
-	rm -f $(OBJ)
+	@echo "cleaning. . ."
+	@rm -f $(OBJ)
+	@echo "cleaning done!"
 
 fclean: clean
-	rm -f $(NAME)
+	echo "deleting lib. . ."
+	@rm -f $(NAME)
+	echo "done!"
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re test
