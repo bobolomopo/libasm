@@ -12,12 +12,19 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
-int ft_strlen(const char *);
+size_t	ft_strlen(const char *);
+char	*ft_strcpy(char *dest, const char *src);
 
 int     main()
 {
-    printf("ft_strlen : %d\n", ft_strlen("123456789"));
+    char *src = "parcimonieux";
+    char dst[20];
+
+	ft_strcpy(dst, src);
+    printf("ft_strlen : %zu\n", ft_strlen("123456789"));
+    printf("ft_strcpy : (|%s|, |%s|)\n", src, dst);
     
     return (0);
 }

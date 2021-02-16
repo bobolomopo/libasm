@@ -11,9 +11,9 @@ segment .text
     global M_FT_STRLEN
 
 M_FT_STRLEN:
-    MOV eax, -1                     ; debute le compte a -1 vu qu'on commence par un increment
+    MOV rax, -1                     ; debute le compte a -1 vu qu'on commence par un increment
 FT_STRLEN_LOOP:
-    INC eax                         ; incremente le compte
+    INC rax                         ; incremente le compte
     CMP BYTE [rdi + rax], 0         ; compare si on est arrive a '\0'
     JNE FT_STRLEN_LOOP              ; si la comparaison n'est pas egale on relance la boucle
     RET                             ; fin de procedure
