@@ -4,7 +4,7 @@
     %define FT_STRCMP _ft_strcmp
 %endif
 
-; prototype : int strcmp(const char *s1, const char *s2);
+; prototype : int ft_strcmp(const char *s1, const char *s2);
 ; defining global name depending OS
 
 segment .text

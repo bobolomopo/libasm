@@ -4,7 +4,7 @@
     %define FT_STRCPY _ft_strcpy
 %endif
 
-; prototype : char *strcpy(char *dest, const char *src)
+; prototype : char *ft_strcpy(char *dest, const char *src)
 ; defining global name depending OS
 
 segment .text

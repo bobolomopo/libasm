@@ -4,7 +4,7 @@
     %define FT_STRLEN _ft_strlen
 %endif
 
-; prototype : size_t strlen(const char *s);
+; prototype : size_t ft_strlen(const char *s);
 ; defining global name depending OS
 
 segment .text
