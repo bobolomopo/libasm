@@ -21,6 +21,8 @@ FT_STRCMP_LOOP:
     JNE FT_STRCMP_LOOP              ; if not, keep going
     JMP EXIT                        ; end and return 0
 FT_STRCMP_INEG:
+    CMP al, 0
+    JE  FT_STRCMP_SMALLER
     CMP al, BYTE [rsi + rcx]        ; subrstraction between the two chars
     %ifdef __LINUX__
         JL  FT_STRCMP_SMALLER
@@ -30,7 +32,12 @@ FT_STRCMP_INEG:
     MOV rax, 1                      ; else return 1
     RET
 FT_STRCMP_SMALLER:
+    CMP BYTE [rsi + rcx], 0
+    JE  EXIT_ONE                    ; exception if src is shorter
     MOV rax, -1                     ; -1 returned
+    RET
+EXIT_ONE:
+    MOV rax, 1                      ; else return 1
     RET
 EXIT:
     RET
