@@ -1,19 +1,19 @@
 %ifdef __LINUX__
-    %define M_FT_STRLEN ft_strlen
+    %define FT_STRLEN ft_strlen
 %else
-    %define M_FT_STRLEN _ft_strlen
+    %define FT_STRLEN _ft_strlen
 %endif
 
 ; prototype : size_t strlen(const char *s);
 ; defining global name depending OS
 
 segment .text
-    global M_FT_STRLEN
+    global FT_STRLEN
 
-M_FT_STRLEN:
-    MOV rax, -1                     ; debute le compte a -1 vu qu'on commence par un increment
+FT_STRLEN:
+    MOV rax, -1                     ; we begin the count to -1, because we begin the loop with an addition
 FT_STRLEN_LOOP:
-    INC rax                         ; incremente le compte
-    CMP BYTE [rdi + rax], 0         ; compare si on est arrive a '\0'
-    JNE FT_STRLEN_LOOP              ; si la comparaison n'est pas egale on relance la boucle
-    RET                             ; fin de procedure
+    INC rax                         ; increment
+    CMP BYTE [rdi + rax], 0         ; are we at the end?
+    JNE FT_STRLEN_LOOP              ; if not, keep going
+    RET                             ; end of procedure
