@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jandre <jandre@student.42.fr>              +#+  +:+       +#+         #
+#    By: jandre <ajuln@hotmail.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 14:00:17 by jandre            #+#    #+#              #
-#    Updated: 2021/02/15 14:43:22 by jandre           ###   ########.fr        #
+#    Updated: 2021/03/02 11:58:16 by jandre           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,7 @@ $(NAME): $(OBJ)
 	@echo "done!"
 
 test: all
-	@echo "RESULT\n------"
-	@$(CC) main.c $(NAME) && ./a.out
+	@$(CC) main.c $(NAME)
 
 clean:
 	@echo "cleaning. . ."

@@ -3,58 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jandre <jandre@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jandre <ajuln@hotmail.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 14:34:17 by jandre            #+#    #+#             */
-/*   Updated: 2021/02/15 14:49:18 by jandre           ###   ########.fr       */
+/*   Updated: 2021/03/02 12:04:34 by jandre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <stdlib.h>
+#include "libasm.h"
 
-
-size_t	ft_strlen(const char *);
-char	*ft_strcpy(char *dest, const char *src);
-int 	ft_strcmp(const char *s1, const char *s2);
-ssize_t ft_write(int fd, const void *buf, size_t count);
-ssize_t ft_read(int fd, void *buf, size_t count);
-char *ft_strdup(const char *s);
-
-int     main()
+int			main(int argc, char **argv)
 {
-   // char *src = "parcimonieux";
-  //  char dst[20];
-  /*  int fd = open("test.txt", O_RDONLY); */
-  //  char buffer[51];
-    char *dest;
-    char *dest2;
-    char *str = "pazoejpazjdoiazjdoiazjdiojaziodjazoidjioazjdoiajzdoijazoidjazoidjoiazjdioazndjznvjcrevjberjvzoenvoizeoinzeoidjiozejd";
+	char	dest[100];
+	int		fd;
+	int		fd2;
 
-   // buffer[50] = '\0';
-	//ft_strcpy(dst, src);
-   // printf("ft_strlen : %zu\n", ft_strlen("123456789"));
-   // printf("ft_strcpy : (|%s|, |%s|)\n", src, dst);
-   // printf("ft_strcmp : %d\n", ft_strcmp("d", ""));
-   // printf("strcmp    : %d\n", strcmp("d", ""));
-   // ft_write(1, "|papaoutes|\n", 12);
-   // write(1, "|papaoutes|\n", 12);
-   // while (read(fd, buffer, 50) > 0)
-    //    printf("%s\n", buffer);
-   // close(fd);
-    dest = ft_strdup(str);
-    dest2 = strdup(str);
-    printf("%s\n", dest);
-    printf("%s\n", dest2);
-    free(dest);
-
-
-
-    return (errno);
+	fd = open("test.txt", O_RDONLY);
+	fd2 = open("testcpy.txt", O_RDONLY);
+	printf("mon strlen  : |%ld|\n", ft_strlen(argv[1]));
+	printf("vrai strlen : |%ld|\n", strlen(argv[1]));
+	printf("mon strcpy  : |%s|\n", ft_strcpy(dest, argv[1]));
+	printf("vrai strlen : |%s|\n", strcpy(dest, argv[1]));
+	printf("mon strcmp  : |%d|\n", ft_strcmp(argv[1], argv[2]));
+	printf("vrai strcmp : |%d|\n", strcmp(argv[1], argv[2]));
+	printf("\nmon write   : |%ld|\n", ft_write(1, argv[1], 10));
+	printf("\nvrai write  : |%ld|\n", write(1, argv[1], 10));
+	printf("mon read    : |%ld|\n", ft_read(fd, dest, 10));
+	printf("vrai read   : |%ld|\n", read(fd2, dest, 10));
+	printf("mon strdup  : |%s|\n", ft_strdup(argv[1]));
+	printf("vrai strdup : |%s|\n", strdup(argv[1]));
+	close(fd);
+	close(fd2);
+	return (1);
 }
