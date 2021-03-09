@@ -19,6 +19,7 @@ FT_STRCMP_LOOP:
     JNE FT_STRCMP_INEG              ; if not equal, jump to the verification of which one is smaller
     CMP BYTE [rdi + rcx], 0         ; is it the end?
     JNE FT_STRCMP_LOOP              ; if not, keep going
+    MOV rax, 0                      ; if its equal rax equal 0
     JMP EXIT                        ; end and return 0
 FT_STRCMP_INEG:
     CMP al, 0
